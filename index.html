@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>김정선 | AI와 함께, 삶을 작품으로 피워냅니다 — 인물대백과사</title>
+<meta name="description" content="AI 자서전 강사 · 아키비스트 김정선. AI와 함께 여러분의 삶을 작품으로 피워냅니다. 인물대백과사 — 누구의 삶이든 대백과에 오릅니다.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Pretendard:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --ivory:#F2EEE2;
+    --ivory-light:#FAF8F2;
+    --green:#0B3324;
+    --ink:#23261F;
+    --gray-1:#4C4A40;
+    --gray-2:#6F6D63;
+    --gold:#D4AF37;
+    --gold-deep:#8A6E22;
+    --sage:#9DAE9E;
+    --sage-2:#7D907F;
+    --line:#CFC8AE;
+    --line-2:#E4DDCB;
+    --max-w:920px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--ink);
+    font-family:'Pretendard', -apple-system, sans-serif;
+    font-size:18px;
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+  }
+  .timeline li > div, .comp-card, .prog-card, .why-body{ min-width:0; }
+  h1,h2,h3,.serif{font-family:'Noto Serif KR', serif;}
+  p, li, figcaption{ text-wrap: pretty; }
+  h1,h2,h3{ text-wrap: balance; }
+  a{color:inherit;}
+  .wrap{max-width:var(--max-w); margin:0 auto; padding:0 28px;}
+  :focus-visible{outline:3px solid var(--gold); outline-offset:3px;}
+
+  /* ── nav ── */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,238,226,0.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line-2);
+  }
+  .nav-inner{
+    max-width:var(--max-w); margin:0 auto; padding:14px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brandmark{font-family:'Noto Serif KR',serif; font-weight:700; font-size:18px; letter-spacing:0.02em; color:var(--green);}
+  .brandmark span{color:var(--gold-deep);}
+  .nav-cta{
+    font-size:15px; font-weight:700; background:var(--green); color:var(--ivory-light);
+    padding:9px 18px; border-radius:999px; text-decoration:none;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:#0f4531;}
+
+  /* ── hero: 타이포 + 실선 ── */
+  .hero{
+    position:relative; overflow:hidden;
+    background:var(--green);
+    color:var(--ivory-light);
+    min-height:86vh; display:flex; align-items:center;
+  }
+  .hero-content{
+    position:relative; z-index:2; width:100%;
+    max-width:var(--max-w); margin:0 auto; padding:80px 28px;
+  }
+  .eyebrow{
+    font-size:14px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:22px; font-weight:700;
+  }
+  .hero h1{
+    font-size:44px; font-size:clamp(32px, 5.4vw, 54px); line-height:1.35; font-weight:700;
+    margin:0 0 26px; max-width:760px; color:var(--ivory-light);
+  }
+  .hero h1 em{ color:var(--gold); font-style:normal; }
+  .hero-sub{
+    font-size:18px; color:rgba(250,248,242,0.82); margin:0 0 36px; max-width:600px;
+  }
+  .hero-meta{
+    display:flex; gap:12px; flex-wrap:wrap; align-items:center;
+    font-size:15px; color:rgba(250,248,242,0.75);
+  }
+  .pill{ border:1px solid rgba(212,175,55,0.55); border-radius:999px; padding:6px 14px; }
+  .pill.solid{ background:var(--gold); color:var(--green); font-weight:700; border-color:var(--gold); }
+
+  /* hero 실선 장식: 파편 → 한 줄 */
+  .hero-lines{
+    position:absolute; top:0; right:0; bottom:0; left:0; pointer-events:none; z-index:1; opacity:0.55;
+  }
+  .hero-lines line{ stroke:var(--gold); stroke-width:1.2; }
+  .hero-lines .frag{ stroke-dasharray:60 900; }
+
+  /* ── ink thread (signature) ── */
+  .thread-col{
+    position:absolute; left:calc(50% - (var(--max-w) / 2) - 34px); top:0; bottom:0; width:2px;
+    z-index:0; pointer-events:none;
+  }
+  @media (max-width: 1100px){ .thread-col{ display:none; } }
+  svg#thread{position:absolute; left:0; top:0; width:100%; height:100%;}
+  .thread-path{ fill:none; stroke:var(--gold-deep); stroke-width:2; opacity:0.5; }
+
+  section{position:relative; z-index:1;}
+
+  /* ── section generic ── */
+  .section{padding:96px 0;}
+  .section-tight{padding:64px 0;}
+  .section-label{
+    font-size:13px; font-weight:800; color:var(--gold-deep); letter-spacing:0.12em;
+    text-transform:uppercase; margin-bottom:14px;
+  }
+  .section h2{
+    font-size:30px; font-size:clamp(24px, 3.4vw, 34px); line-height:1.5; margin:0 0 28px; font-weight:700; color:var(--green);
+  }
+  .lede{font-size:19px; color:var(--gray-1); max-width:640px;}
+  hr.divider{ border:none; border-top:1px solid var(--line); margin:0; }
+
+  /* ── why ── */
+  .why-quote{
+    font-family:'Noto Serif KR',serif; font-size:26px; line-height:1.65; font-weight:600;
+    margin:0 0 24px; color:var(--green);
+  }
+  .why-body{ max-width:680px; }
+  .why-body p{margin:0 0 18px; color:var(--gray-1); font-size:17px;}
+  .why-body strong{color:var(--ink); font-weight:700;}
+  .gold-line{ width:56px; height:3px; background:var(--gold); margin:26px 0; }
+
+  /* ── archive (인물대백과사) ── */
+  .archive{ background:var(--green); color:var(--ivory-light); }
+  .archive .section-label{ color:var(--gold); }
+  .archive h2{ color:var(--ivory-light); }
+  .archive-quote{
+    font-family:'Noto Serif KR',serif; font-size:24px; font-size:clamp(20px,2.6vw,26px); line-height:1.7;
+    color:var(--ivory-light); margin:0 0 14px; max-width:680px;
+  }
+  .archive-cite{ font-size:14px; color:rgba(250,248,242,0.65); margin:0 0 40px; }
+  .archive-body p{ font-size:18px; color:rgba(250,248,242,0.9); margin:0 0 16px; max-width:640px; }
+  .archive-body strong{ color:var(--gold); font-weight:700; }
+
+  /* ── timeline ── */
+  .timeline{list-style:none; margin:0; padding:0;}
+  .timeline li{
+    display:grid; grid-template-columns:120px 1fr; gap:28px;
+    padding:26px 0; border-top:1px solid var(--line-2);
+  }
+  .timeline li:first-child{border-top:none;}
+  .tl-year{
+    font-family:'Noto Serif KR',serif; font-weight:700; color:var(--gold-deep); font-size:16px; padding-top:4px;
+  }
+  .tl-role{font-weight:700; font-size:19px; margin:0 0 6px; color:var(--green);}
+  .tl-desc{color:var(--gray-1); font-size:16px; margin:0;}
+
+  /* ── competencies ── */
+  .comp-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:22px; }
+  .comp-card{
+    background:var(--ivory-light); border:1px solid var(--line-2);
+    border-radius:8px; padding:26px 24px;
+  }
+  .comp-card h3{
+    font-size:20px; margin:0 0 10px; font-weight:700; color:var(--green);
+    display:flex; align-items:center; gap:10px;
+  }
+  .comp-card .tag{
+    display:inline-block; background:var(--green); color:var(--gold);
+    font-size:12px; font-weight:800; padding:3px 10px; border-radius:999px; letter-spacing:0.04em;
+  }
+  .comp-card p{margin:0; color:var(--gray-1); font-size:15.5px;}
+
+  /* ── programs ── */
+  .prog-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; }
+  .prog-card{
+    background:var(--green); color:var(--ivory-light);
+    border-radius:8px; padding:28px 26px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .prog-card .dur{
+    font-size:13px; letter-spacing:0.08em; color:var(--gold); font-weight:800; text-transform:uppercase;
+  }
+  .prog-card h3{font-size:19px; margin:0; font-weight:700; line-height:1.4; color:var(--ivory-light);}
+  .prog-card .out{font-size:14.5px; color:rgba(250,248,242,0.75); margin-top:auto;}
+  .prog-card .out b{ color:var(--gold); font-weight:700; }
+
+  /* ── philosophy flow ── */
+  .flow{ display:flex; flex-wrap:wrap; align-items:center; gap:0; margin-top:8px; }
+  .flow-step{
+    background:var(--ivory-light); border:1px solid var(--line);
+    border-radius:999px; padding:12px 20px; font-size:15px; font-weight:700; color:var(--green);
+  }
+  .flow-arrow{color:var(--gold-deep); font-size:18px; margin:0 8px; font-weight:700;}
+  .flow-note{margin-top:20px; color:var(--sage-2); font-size:15px;}
+
+  /* ── institutions ── */
+  .inst-group{margin-bottom:28px;}
+  .inst-group h3{font-size:16px; color:var(--sage-2); margin:0 0 14px; font-weight:700;}
+  .inst-pills{display:flex; flex-wrap:wrap; gap:10px;}
+  .inst-pill{
+    background:var(--green); color:var(--ivory-light); font-size:14.5px; font-weight:600;
+    padding:8px 16px; border-radius:999px;
+  }
+  .inst-pill.hope{
+    background:transparent; color:var(--gray-1); border:1.5px dashed var(--sage);
+  }
+
+  /* ── closing ── */
+  .closing{ background:var(--green); color:var(--ivory-light); }
+  .closing .wrap{padding:96px 28px;}
+  .closing-cite{
+    font-family:'Noto Serif KR',serif; font-size:17px; color:rgba(250,248,242,0.7);
+    margin:0 0 8px; max-width:640px;
+  }
+  .closing-cite-src{ font-size:13px; color:rgba(250,248,242,0.5); margin:0 0 44px; }
+  .closing-quote{
+    font-family:'Noto Serif KR',serif; font-size:26px; font-size:clamp(22px,3vw,28px); line-height:1.75;
+    margin:0 0 44px; max-width:640px;
+  }
+  .closing-quote em{color:var(--gold); font-style:normal;}
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:48px; }
+  .cta{
+    display:inline-block; text-decoration:none; font-weight:800; font-size:16px;
+    padding:14px 26px; border-radius:999px;
+  }
+  .cta.primary{ background:var(--gold); color:var(--green); }
+  .cta.primary:hover{ background:#e0bd4f; }
+  .cta.ghost{ border:1.5px solid rgba(212,175,55,0.7); color:var(--gold); }
+  .contact-card{
+    display:flex; flex-wrap:wrap; gap:24px; align-items:center; justify-content:flex-start;
+    padding-top:36px; border-top:1px solid rgba(250,248,242,0.18);
+  }
+  .contact-qr{ text-align:center; }
+  .contact-qr img{ width:120px; height:120px; border-radius:8px; background:#fff; padding:8px; display:block; }
+  .qr-label{ margin-top:8px; font-size:13px; color:rgba(250,248,242,0.75); }
+  .contact-name{font-family:'Noto Serif KR',serif; font-size:22px; font-weight:700;}
+  .contact-role{font-size:14.5px; color:rgba(250,248,242,0.7); margin-top:4px;}
+  .contact-links{display:flex; flex-direction:column; gap:6px; font-size:15.5px; margin-top:8px;}
+  .contact-note{ font-size:15px; color:rgba(250,248,242,0.75); margin-top:12px; max-width:520px; }
+  .contact-note strong{ color:var(--gold); font-weight:700; }
+  .contact-links a{text-decoration:none; color:var(--gold);}
+  .link-copy{
+    background:none; border:none; padding:0; margin:0; cursor:pointer;
+    color:var(--gold); font:inherit; font-size:15.5px; text-align:left;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .link-copy .copy-hint{
+    font-size:11px; letter-spacing:0.08em; border:1px solid rgba(212,175,55,0.6);
+    border-radius:999px; padding:1px 8px; color:var(--gold); opacity:0.85;
+  }
+  .link-copy:hover .copy-hint{ background:var(--gold); color:var(--green); }
+  .cta.ghost{ background:transparent; cursor:pointer; font-family:inherit; }
+  .copy-toast{
+    position:fixed; left:50%; bottom:28px; transform:translateX(-50%) translateY(20px);
+    background:var(--gold); color:var(--green); font-weight:800; font-size:15px;
+    padding:12px 22px; border-radius:999px; box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    opacity:0; pointer-events:none; transition:opacity .25s ease, transform .25s ease; z-index:99;
+  }
+  .copy-toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+
+  footer{
+    background:#071f16; color:rgba(250,248,242,0.55);
+    text-align:center; font-size:13.5px; padding:22px 18px;
+  }
+
+  @media (max-width: 760px){
+    .br-desk{ display:none; }
+    .comp-grid{grid-template-columns:1fr;}
+    .prog-grid{grid-template-columns:1fr;}
+    .timeline li{grid-template-columns:1fr;}
+    .tl-year{padding-top:0;}
+    body{font-size:16.5px;}
+    .contact-card{flex-direction:column; align-items:flex-start;}
+    .hero{min-height:auto;}
+  }
+  @media (max-width: 480px){
+    .nav-inner{padding:12px 16px;}
+    .wrap{padding:0 18px;}
+    .hero-content{padding:56px 18px;}
+    .flow{gap:8px;}
+    .flow-step{padding:10px 14px; font-size:14px;}
+    .flow-arrow{margin:0 2px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brandmark">김정선 <span>· 인물대백과사</span></div>
+    <a class="nav-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSf85PiWM0yACEhrDPvW6Th8j9zX9bA3oSDz9338bjfT6SxOog/viewform" target="_blank" rel="noopener">문의하기</a>
+  </div>
+</header>
+
+<section class="hero">
+  <svg class="hero-lines" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+    <line class="frag" x1="60"  y1="120" x2="1140" y2="120"/>
+    <line class="frag" x1="60"  y1="220" x2="1140" y2="220" style="stroke-dashoffset:-260"/>
+    <line class="frag" x1="60"  y1="320" x2="1140" y2="320" style="stroke-dashoffset:-520"/>
+    <line class="frag" x1="60"  y1="420" x2="1140" y2="420" style="stroke-dashoffset:-140"/>
+    <line x1="60" y1="640" x2="1140" y2="640" style="opacity:0.7"/>
+  </svg>
+  <div class="hero-content">
+    <div class="eyebrow">AI 자서전 강사 · 아키비스트</div>
+    <h1>AI와 함께,<br>여러분의 삶을 <em>작품</em>으로<br>피워냅니다</h1>
+    <p class="hero-sub">흩어진 하루들이 한 사람의 삶이 되고, 그 삶이 한 권의 책이 되는 곳. 인물대백과사입니다.</p>
+    <div class="hero-meta">
+      <span class="pill">글</span>
+      <span class="pill">이미지</span>
+      <span class="pill">노래</span>
+      <span class="pill">영상</span>
+      <span class="pill solid">한 권의 책</span>
+    </div>
+  </div>
+</section>
+
+<div style="position:relative;">
+<div class="thread-col">
+  <svg id="thread" viewBox="0 0 4 4000" preserveAspectRatio="none">
+    <path class="thread-path" id="threadPath" d="M2,0 L2,4000"/>
+  </svg>
+</div>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-label">Why</div>
+    <div class="why-body">
+      <p class="why-quote">수십 년의 시간을 지나왔지만,<br>막상 쓰려면 무엇부터 써야 할지 막막합니다.</p>
+      <p>그래서 이 강의는 단 하나의 질문에서 출발합니다 —<br><strong>"내 생애 최고의 순간은 언제였습니까?"</strong></p>
+      <p>AI가 스무고개 하듯 질문을 건네고, 친구와 이야기하듯 답만 하면 초고가 완성됩니다.<br class="br-desk"> 여기에 강사의 회고 코칭이 더해지고, 그 글은 노래·이미지·영상으로 피어납니다.</p>
+      <div class="gold-line"></div>
+      <p><strong>이 프로그램은 AI를 배우는 시간이 아닙니다.</strong><br>AI는 묻어둔 기억을 끄집어냅니다. 여러분이 발견한 의미는 인생 2막을 엽니다.</p>
+      <p>AI와 함께, 한 사람의 삶을 작품으로 피워내는 자리에 여러분을 초대합니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section archive" id="archive">
+  <div class="wrap">
+    <div class="section-label">인물대백과사</div>
+    <p class="archive-quote">"노인 한 사람이 세상을 떠나는 것은<br>도서관 하나가 불타 사라지는 것과 같다."</p>
+    <p class="archive-cite">— 아마두 함파테 바(Amadou Hampâté Bâ), 1960년 유네스코 연설</p>
+    <div class="archive-body">
+      <p>이름난 사람만 대백과에 오르던 시대는 지났습니다.</p>
+      <p><strong>누구의 삶이든 대백과에 오릅니다.</strong></p>
+      <p>인물대백과사는 AI와 함께 한 사람의 삶을 글·이미지·노래·영상으로 피워내고,<br class="br-desk"> 그 작품을 한 권의 책으로 남기는 아카이브입니다.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight" id="timeline">
+  <div class="wrap">
+    <div class="section-label">김정선은 누구인가</div>
+    <h2>카메라로 순간을 담다가, 글로 삶을 담다가,<br>이제는 AI와 함께 사람의 삶을 담습니다</h2>
+    <ul class="timeline">
+      <li>
+        <div class="tl-year">2006 ~</div>
+        <div><p class="tl-role">다큐멘터리 사진작가</p><p class="tl-desc">순간을 렌즈에 담는 일로 시작했습니다.</p></div>
+      </li>
+      <li>
+        <div class="tl-year">2016 ~</div>
+        <div><p class="tl-role">에세이스트</p><p class="tl-desc">제13회 동서문학상 수필부문 수상. 300여 편의 에세이를 썼습니다.</p></div>
+      </li>
+      <li>
+        <div class="tl-year">2018 ~</div>
+        <div><p class="tl-role">마을글쓰기 강사</p><p class="tl-desc">서울시마을공동체종합지원센터 마을실천대학에서 마을글쓰기 강의를 맡았습니다.</p></div>
+      </li>
+      <li>
+        <div class="tl-year">2023 ~</div>
+        <div><p class="tl-role">AI크리에이터</p><p class="tl-desc">ChatGPT를 만나 인생 2막을 시작했습니다.<br class="br-desk"> 2025년 12월 'AI마에스트로상'을 수상하고, 2026년 2월 서울사이버대학교 AI크리에이터학과를 졸업했습니다.</p></div>
+      </li>
+      <li>
+        <div class="tl-year">지금</div>
+        <div><p class="tl-role">AI 자서전 강사 · 아키비스트</p><p class="tl-desc">이제는 AI와 함께, 다른 사람의 삶을 작품으로 피워내는 일을 합니다.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-tight" id="competencies">
+  <div class="wrap">
+    <div class="section-label">왜 김정선인가</div>
+    <h2>다섯 가지 경쟁력</h2>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3><span class="tag">AI</span> 처음도 쉽게</h3>
+        <p>시니어 대상 AI 교육에서 밀착 케어로 70대 디지털 초심자까지 결과물을 손에 쥐고 수료하게 했습니다.</p>
+      </div>
+      <div class="comp-card">
+        <h3><span class="tag">글쓰기</span> 300여 편의 에세이</h3>
+        <p>2016년 제13회 동서문학상 수필부문 수상, 14년 글쓰기 경력.</p>
+      </div>
+      <div class="comp-card">
+        <h3><span class="tag">운영</span> 포기하지 않는 시스템</h3>
+        <p>매주 짧은 글 한 편씩 부담 분산, 미완성자 1:1 코칭 병행.</p>
+      </div>
+      <div class="comp-card">
+        <h3><span class="tag">결과물</span> 글 · 이미지 · 노래 · 영상</h3>
+        <p>글 한 편에서 시작해 이미지·노래·영상으로 확장되고, 끝내 한 권의 책으로 모입니다.</p>
+      </div>
+      <div class="comp-card" style="grid-column:1 / -1;">
+        <h3><span class="tag">지속</span> 강의가 끝난 뒤에도 남는 것</h3>
+        <p>수료하신 분의 작품은 인물대백과사 아카이브에 남습니다. 강의는 끝나도, 삶의 기록은 사라지지 않습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight" id="programs">
+  <div class="wrap">
+    <div class="section-label">프로그램</div>
+    <h2>필요에 맞게, 네 가지 방식으로</h2>
+    <div class="prog-grid">
+      <div class="prog-card">
+        <div class="dur">2시간(A안) / 1시간(B안)</div>
+        <h3>AI와 함께 내 인생 첫 페이지</h3>
+        <div class="out">A안 · 회고록 + <b>노래</b><br>B안 · 회고록 + <b>이미지</b></div>
+      </div>
+      <div class="prog-card">
+        <div class="dur">4주 과정</div>
+        <h3>AI 자서전 잡지 만들기</h3>
+        <div class="out">결과물 · 미니 자서전 잡지 PDF</div>
+      </div>
+      <div class="prog-card">
+        <div class="dur">12주 과정</div>
+        <h3>AI와 함께 자서전 만들기 입문</h3>
+        <div class="out">결과물 · 문집 (종이책 / PDF)</div>
+      </div>
+      <div class="prog-card">
+        <div class="dur">맞춤형</div>
+        <h3>기업 퇴직자 회고록</h3>
+        <div class="out">결과물 · 회고록 + 인생 <b>노래·이미지·영상</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tight" id="philosophy">
+  <div class="wrap">
+    <div class="section-label">운영 철학</div>
+    <h2>시스템이 일하게 합니다</h2>
+    <div class="flow">
+      <span class="flow-step">AI 질문</span><span class="flow-arrow">→</span>
+      <span class="flow-step">짧은 글</span><span class="flow-arrow">→</span>
+      <span class="flow-step">합평</span><span class="flow-arrow">→</span>
+      <span class="flow-step">퇴고</span><span class="flow-arrow">→</span>
+      <span class="flow-step">문집</span><span class="flow-arrow">→</span>
+      <span class="flow-step">발표회</span>
+    </div>
+    <p class="flow-note">이 흐름은 실제 12주 입문 강좌 1~12회차 커리큘럼에서 그대로 도출된 것입니다.</p>
+  </div>
+</section>
+
+<section class="section section-tight" id="institutions">
+  <div class="wrap">
+    <div class="section-label">함께할 수 있는 기관</div>
+    <h2>이런 곳에서 만날 수 있습니다</h2>
+    <div class="inst-group">
+      <h3>함께한 기관</h3>
+      <div class="inst-pills">
+        <span class="inst-pill">평생학습관 — 성북구평생학습관</span>
+        <span class="inst-pill">평생학습관 — 논현글로벌평생학습관</span>
+        <span class="inst-pill">마을공동체 — 서울시마을공동체종합지원센터</span>
+      </div>
+    </div>
+    <div class="inst-group">
+      <h3>만나고 싶은 기관</h3>
+      <div class="inst-pills">
+        <span class="inst-pill hope">평생학습관</span>
+        <span class="inst-pill hope">도서관</span>
+        <span class="inst-pill hope">노인복지관</span>
+        <span class="inst-pill hope">50+센터</span>
+        <span class="inst-pill hope">문화센터</span>
+        <span class="inst-pill hope">기업</span>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<section class="closing" id="closing">
+  <div class="wrap">
+    <p class="closing-cite">"노인 한 사람이 세상을 떠나는 것은 도서관 하나가 불타 사라지는 것과 같다."</p>
+    <p class="closing-cite-src">— 아마두 함파테 바</p>
+    <p class="closing-quote">
+      흩어진 하루는<br>그냥 두면 잊힙니다.<br><br>
+      AI와 함께 하나씩 꺼내어<br>한 사람의 삶으로 모읍니다.<br><br>
+      그리고 이제 여러분의 이야기는<br>인물대백과사에 <em>한 권의 책</em>으로 피어납니다.
+    </p>
+    <div class="cta-row">
+      <a class="cta primary" href="https://docs.google.com/forms/d/e/1FAIpQLSf85PiWM0yACEhrDPvW6Th8j9zX9bA3oSDz9338bjfT6SxOog/viewform" target="_blank" rel="noopener">문의하기</a>
+    </div>
+    <div class="contact-card">
+      <div>
+        <div class="contact-name">김정선</div>
+        <div class="contact-role">AI 자서전 강사 · 아키비스트 · 인물대백과사</div>
+        <div class="contact-note">강의·제작·협업 문의는 위 <strong>문의하기</strong>로 남겨 주십시오. 2~3일 안에 답장드리겠습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>© 김정선 · 인물대백과사 — AI와 함께, 한 사람의 삶을 작품으로 피워내는 AI 자서전 강사 · 아키비스트</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var path = document.getElementById('threadPath');
+  var threadCol = document.querySelector('.thread-col');
+  if(!threadCol) return;
+
+  function sizeThread(){
+    var container = threadCol.parentElement;
+    var h = container.offsetHeight;
+    threadCol.style.height = h + 'px';
+    var svg = document.getElementById('thread');
+    svg.setAttribute('viewBox', '0 0 4 ' + h);
+    path.setAttribute('d', 'M2,0 L2,' + h);
+    if(!reduce){
+      path.style.strokeDasharray = h * 1.05;
+      path.style.strokeDashoffset = h * 1.05;
+    }
+  }
+  function updateThread(){
+    if(reduce) return;
+    var rect = threadCol.getBoundingClientRect();
+    var total = threadCol.offsetHeight;
+    var scrolled = Math.min(total, Math.max(0, window.innerHeight - rect.top));
+    var frac = Math.min(1, scrolled / total);
+    var len = total * 1.05;
+    path.style.strokeDashoffset = (len * (1 - frac));
+  }
+  window.addEventListener('load', function(){ sizeThread(); updateThread(); });
+  window.addEventListener('resize', sizeThread);
+  window.addEventListener('scroll', updateThread, {passive:true});
+})();
+
+(function preventOrphans(){
+  function lastTextNode(node){
+    for(var i=node.childNodes.length-1; i>=0; i--){
+      var c = node.childNodes[i];
+      if(c.nodeType===3 && c.textContent.trim().length>0) return c;
+      if(c.nodeType===1){ var f = lastTextNode(c); if(f) return f; }
+    }
+    return null;
+  }
+  document.querySelectorAll('p, li, figcaption, h1, h2, h3, .flow-note, .contact-role').forEach(function(el){
+    var tn = lastTextNode(el); if(!tn) return;
+    var t = tn.textContent, i = t.lastIndexOf(' ');
+    if(i > -1) tn.textContent = t.slice(0,i) + '\u00A0' + t.slice(i+1);
+  });
+})();
+
+</script>
+</body>
+</html>
